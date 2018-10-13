@@ -53,23 +53,23 @@ function redirectLink(){
 			window.open("http://www.geocities.ws/nnabnews/mathtest");
 	}
 }
-function isIncognito() {
-	var fs = window.RequestFileSystem || window.webkitRequestFileSystem;
-	var result = false;
-	if (!fs) {
-		result = false;
-	}
-	fs(window.TEMPORARY, 100, function(fs) {
-		result = false;
-	}, function(err) {
-		result = true;
-	});
-	return result;
-}
 // Initialization
 $(document).ready(function(){
 	// Messages
 	// Anonymous function
+	function isIncognito() {
+		var fs = window.RequestFileSystem || window.webkitRequestFileSystem;
+		let result = false;
+		if (!fs) {
+			result = false;
+		}
+		fs(window.TEMPORARY, 100, function(fs) {
+			result = false;
+		}, function(err) {
+			result = true;
+		});
+		return result;
+	}
 	(function () {
 		if (isIncognito()) {
 			showMessage("Going incognito, aren'tcha?", 5000);
