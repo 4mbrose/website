@@ -80,9 +80,9 @@ $(document).ready(function(){
 		// Increment times visited
 		Cookies.set("timesVisited", Number.valueOf()(Cookies.get("timesVisited")) + 1);
 
-		if (Cookies.get("timesVisited") <= 5) {
+		if (Number.valueOf()(Cookies.get("timesVisited")) <= 5) {
 			showMessage("Welcome back!", 2000);
-		} else if (Cookies.get("timesVisited") < 100) {
+		} else if (Number.valueOf()(Cookies.get("timesVisited")) < 100) {
 			showMessage("Welcome back! You have visited this page " + Cookies.get("timesVisited") + " times.", 2000);
 		}
 	}
