@@ -72,7 +72,8 @@ $(document).ready(function(){
 		return;
 	})();
 
-	(function () {
+	setTimeout(
+	function () {
 		if (isIncognitoResult) {
 			showMessage("Going incognito, aren'tcha?", 5000);
 			return;
@@ -113,7 +114,7 @@ $(document).ready(function(){
 				showMessage("It's time to stop!", 2000);
 			}
 		}
-	})();
+	}, 10);
 	// Resize easter egg
 	$(window).resize(function(){
 		if (window.innerWidth <= 500) {
