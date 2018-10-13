@@ -60,7 +60,11 @@ $(document).ready(function(){
 	if (Cookies.get("introMessage") != "true") {
 		Cookies.set("introMessage", "true");
 		Cookies.set("timesVisited", 1);
-		showMessage("Hi! Happy Spooktober!", 2000);
+		if (document.referrer == "http://www.geocities.ws/nnabnews/") {
+			showMessage("Hi! Welcome to the new site!", 2000);
+		} else {
+			showMessage("Hi! Happy Spooktober!", 2000);
+		}
 		setTimeout(
 			function(){
 				showMessage("This website is still under construction!", 2000);
@@ -85,7 +89,7 @@ $(document).ready(function(){
 		} else if (Number.valueOf()(Cookies.get("timesVisited")) < 100) {
 			showMessage("Welcome back! You have visited this page " + Cookies.get("timesVisited") + " times.", 2000);
 		} else if (Number.valueOf()(Cookies.get("timesVisited")) < 200) {
-			showMessage("What do you think you're doing?!", 2000);
+			showMessage("What are you doing?!", 2000);
 		} else if (Number.valueOf()(Cookies.get("timesVisited")) == 201) {
 			showMessage("It's time to stop!", 2000);
 		}

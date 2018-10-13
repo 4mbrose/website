@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- 1.2Spooky -->
+<html>
+	<head>
+		<title>The website has moved!</title>
+		<link rel="stylesheet" type="text/css" href="websitecssh.css">
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+		</script>
+		<!-- I had to change the link of the easing script -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js">
+		</script>
+		<script src="https://pastebin.com/raw/fyedFBcN">
+		</script>
+		<script src="https://code.jquery.com/color/jquery.color-2.1.2.min.js">
+		</script>
+		<script src="https://pastebin.com/raw/5Bz7rDCY">
+		</script>
+		<script>
+		var showing = 0;
+		function showMessage(msg, duration){
+			function showIndicator(){
+				$("#message").animate({padding: "12px"}, duration, function(){
+					// hideMsg();
+				});
+				console.log(duration);
+			}
+			function hideMsg(){
+				$("#message").slideUp(400, "easeInOutQuad", function(){
+					$("#message").css("padding", "10px");
+					showing = 0;
+				});
+			}
+			if (showing === 0){
+				showing = 1;
+				$("#message").slideUp(0);
+				$("#message-text").html(msg);
+				$("#message").slideDown(400, "easeOutBounce", function(){
+					showIndicator();
+				});
+			}
+		}
+		$(document).ready(function(){
+			showMessage("Hey! The website has moved to <a href=\"https://4mbrose.github.io/website/\">GitHub Sites</a>! I'm redirecting you there in a bit...", 0);
+			setInterval(
+				function () {window.location.replace("https://4mbrose.github.io/website/");},
+				3000
+			)
+		});
+		</script>
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="https://www.geocities.ws/nnabnews/indexsrc103/icon/favicon-32x32.png" sizes="32x32" />
+		<link rel="icon" type="image/png" href="https://www.geocities.ws/nnabnews/indexsrc103/icon/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" href="https://www.geocities.ws/nnabnews/indexsrc103/icon/favicon.ico" />
+	</head>
+	<body>
+		<div class="content-box" id="message">
+		  <h1 id="message-text">This site has moved to GitHub Sites! I'm redirecting you there in a second...</h1>
+		</div>
+		<div id="postsXML">
+		</div>
+		<div class="about-section" hidden>
+			<h1>About</h1>
+			<pre id="about-text">By the time you've read this, you should've been redirected.</pre>
+		</div>
+	</body>
+</html>
