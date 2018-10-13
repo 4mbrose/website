@@ -54,23 +54,24 @@ function redirectLink(){
 	}
 }
 var isIncognitoResult = false;
-function isIncognito() {
-	var fs = window.RequestFileSystem || window.webkitRequestFileSystem;
-	if (!fs) {
-		isIncognitoResult = false;
-	}
-	isIncognitoResult = false;
-	fs(window.TEMPORARY, 100, function(fs) {
-	}, function(err) {
-		isIncognitoResult = true;
-	});
-	return;
-}
-isIncognito();
+
 // Initialization
 $(document).ready(function(){
 	// Messages
 	// Anonymous function
+	(function () {
+		var fs = window.RequestFileSystem || window.webkitRequestFileSystem;
+		if (!fs) {
+			isIncognitoResult = false;
+		}
+		isIncognitoResult = false;
+		fs(window.TEMPORARY, 100, function(fs) {
+		}, function(err) {
+			isIncognitoResult = true;
+		});
+		return;
+	})()
+
 	(function () {
 		if (isIncognitoResult) {
 			showMessage("Going incognito, aren'tcha?", 5000);
