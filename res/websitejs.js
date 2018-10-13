@@ -56,8 +56,9 @@ function redirectLink(){
 
 // Initialization
 $(document).ready(function(){
-	// Messages 
-	if (Cookies.get("introMsg") != "true") {
+	// Messages
+	if (Cookies.get("introMessage") != "true") {
+		Cookies.set("introMessage", "true");
 		showMessage("Hi! Happy Spooktober!", 2000);
 		setTimeout(
 			function(){
@@ -73,6 +74,8 @@ $(document).ready(function(){
 			}, 9000);
 		/*Cookies.set("introMsg", "true");
 		console.log(Cookies.get("introMsg")); (This was scrapped)*/
+	} else {
+		showMessage("Welcome back!", 2000);
 	}
 	// Resize easter egg
 	$(window).resize(function(){
@@ -86,7 +89,7 @@ $(document).ready(function(){
 	// Log message to console
 	console.log("%cLooking around?", "color: white; font-size:30px; font-family: \"Source Sans Pro\", sans-serif; font-weight: 500;-webkit-text-stroke: 1px black;", "Try: showMessage(\"[Insert Message]\", [Duration in milliseconds])");
 	// Fullscreen function
-	
+
 	// Add fullscreen button
 	var fullScreenBtn = "<img class='full-screen' src='https://png.icons8.com/full-screen-filled/ios7/100' width=35rem />";
 	// Full Screen Filled icon by Icons8
@@ -99,7 +102,7 @@ $(document).ready(function(){
 			$(".scaled").parent().animate({"width":"33.01%","height":"20rem","minWidth":"20rem"},500,"easeInOutExpo");
 			$(".scaled").animate({"width":"35px"},500,"easeInOutExpo");
 			$(".scaled").removeClass("scaled");
-			this.scaled = true;	
+			this.scaled = true;
 			$(this).addClass("scaled");
 			$(this).parent().animate({"width":"66.3%","height":"40.2rem","minWidth":"40rem"},500,"easeInOutExpo");
 			$(this).animate({"width":"45px"},500,"easeInOutExpo");
