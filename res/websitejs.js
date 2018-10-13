@@ -84,6 +84,10 @@ $(document).ready(function(){
 			showMessage("Welcome back!", 2000);
 		} else if (Number.valueOf()(Cookies.get("timesVisited")) < 100) {
 			showMessage("Welcome back! You have visited this page " + Cookies.get("timesVisited") + " times.", 2000);
+		} else if (Number.valueOf()(Cookies.get("timesVisited")) < 200) {
+			showMessage("What do you think you're doing?!", 2000);
+		} else if (Number.valueOf()(Cookies.get("timesVisited")) == 201) {
+			showMessage("It's time to stop!", 2000);
 		}
 	}
 	// Resize easter egg
