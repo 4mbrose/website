@@ -53,7 +53,7 @@ function redirectLink(){
 			window.open("http://www.geocities.ws/nnabnews/mathtest");
 	}
 }
-var isIncognitoResult;
+var isIncognitoResult = false;
 
 // Initialization
 $(document).ready(function(){
@@ -72,49 +72,49 @@ $(document).ready(function(){
 		return;
 	})();
 
-	(function () {
-		while (isIncognitoResult == undefined) {} // Wait for it to be defined
-		if (isIncognitoResult) {
-			showMessage("Going incognito, aren'tcha?", 5000);
-			return;
-		}
-		if (Cookies.get("introMessage") != "true") {
-			Cookies.set("introMessage", "true");
-			Cookies.set("timesVisited", 1);
-			if (document.referrer == "http://www.geocities.ws/nnabnews/") {
-				showMessage("Hi! Welcome to the new site!", 2000);
+	setTimeout(
+		function () {
+			if (isIncognitoResult) {
+				showMessage("Going incognito, aren'tcha?", 5000);
+				return;
+			}
+			if (Cookies.get("introMessage") != "true") {
+				Cookies.set("introMessage", "true");
+				Cookies.set("timesVisited", 1);
+				if (document.referrer == "http://www.geocities.ws/nnabnews/") {
+					showMessage("Hi! Welcome to the new site!", 2000);
+				} else {
+					showMessage("Hi! Happy Spooktober!", 2000);
+				}
+				setTimeout(
+					function(){
+						showMessage("This website is still under construction!", 2000);
+					}, 3000);
+				setTimeout(
+					function(){
+						showMessage("Also, I'm using Dreamweaver rather than Notepad++ now...", 2000);
+					}, 6000);
+				setTimeout(
+					function(){
+						showMessage("Thanks, and have fun!", 2000);
+					}, 9000);
+				/*Cookies.set("introMsg", "true");
+				console.log(Cookies.get("introMsg")); (This was scrapped)*/
 			} else {
-				showMessage("Hi! Happy Spooktober!", 2000);
-			}
-			setTimeout(
-				function(){
-					showMessage("This website is still under construction!", 2000);
-				}, 3000);
-			setTimeout(
-				function(){
-					showMessage("Also, I'm using Dreamweaver rather than Notepad++ now...", 2000);
-				}, 6000);
-			setTimeout(
-				function(){
-					showMessage("Thanks, and have fun!", 2000);
-				}, 9000);
-			/*Cookies.set("introMsg", "true");
-			console.log(Cookies.get("introMsg")); (This was scrapped)*/
-		} else {
 
-			// Increment times visited
-			Cookies.set("timesVisited", Number.valueOf()(Cookies.get("timesVisited")) + 1);
-			if (Number.valueOf()(Cookies.get("timesVisited")) <= 5) {
-				showMessage("Welcome back!", 2000);
-			} else if (Number.valueOf()(Cookies.get("timesVisited")) < 100) {
-				showMessage("Welcome back! You have visited this page " + Cookies.get("timesVisited") + " times.", 2000);
-			} else if (Number.valueOf()(Cookies.get("timesVisited")) < 200) {
-				showMessage("What are you doing?!", 2000);
-			} else if (Number.valueOf()(Cookies.get("timesVisited")) == 201) {
-				showMessage("It's time to stop!", 2000);
+				// Increment times visited
+				Cookies.set("timesVisited", Number.valueOf()(Cookies.get("timesVisited")) + 1);
+				if (Number.valueOf()(Cookies.get("timesVisited")) <= 5) {
+					showMessage("Welcome back!", 2000);
+				} else if (Number.valueOf()(Cookies.get("timesVisited")) < 100) {
+					showMessage("Welcome back! You have visited this page " + Cookies.get("timesVisited") + " times.", 2000);
+				} else if (Number.valueOf()(Cookies.get("timesVisited")) < 200) {
+					showMessage("What are you doing?!", 2000);
+				} else if (Number.valueOf()(Cookies.get("timesVisited")) == 201) {
+					showMessage("It's time to stop!", 2000);
+				}
 			}
-		}
-	})();
+	}, 100);
 	// Resize easter egg
 	$(window).resize(function(){
 		if (window.innerWidth <= 500) {
