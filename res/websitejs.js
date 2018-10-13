@@ -59,6 +59,7 @@ $(document).ready(function(){
 	// Messages
 	if (Cookies.get("introMessage") != "true") {
 		Cookies.set("introMessage", "true");
+		Cookies.set("timesVisited", 1);
 		showMessage("Hi! Happy Spooktober!", 2000);
 		setTimeout(
 			function(){
@@ -75,7 +76,15 @@ $(document).ready(function(){
 		/*Cookies.set("introMsg", "true");
 		console.log(Cookies.get("introMsg")); (This was scrapped)*/
 	} else {
-		showMessage("Welcome back!", 2000);
+
+		// Increment times visited
+		Cookies.set("timesVisited", Number.valueOf()(Cookies.get("timesVisited")) + 1);
+
+		if (Cookies.get("timesVisited") <= 5) {
+			showMessage("Welcome back!", 2000);
+		} else if (Cookies.get("timesVisited") < 100) {
+			showMessage("Welcome back! You have visited this page " + Cookies.get("timesVisited") + " times.", 2000);
+		}
 	}
 	// Resize easter egg
 	$(window).resize(function(){
