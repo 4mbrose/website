@@ -70,7 +70,7 @@ $(document).ready(function(){
 			isIncognitoResult = true;
 		});
 		return;
-	})()
+	})();
 
 	(function () {
 		if (isIncognitoResult) {
@@ -113,7 +113,7 @@ $(document).ready(function(){
 				showMessage("It's time to stop!", 2000);
 			}
 		}
-	})()
+	})();
 	// Resize easter egg
 	$(window).resize(function(){
 		if (window.innerWidth <= 500) {
