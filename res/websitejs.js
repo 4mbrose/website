@@ -195,11 +195,27 @@ $(document).ready(function(){
 	// About page text
 	$("#about-text").text(aboutText);
 	// Numberphile easter egg
+	/*
 	$(document).keydown(function(event){
 		if (event.which == 69){
 			showMessage("We're gonna talk about e! The big, famous constant, e!", 2718);
 		}
 		// Thanks James Grime
+	});
+	*/
+	var keywordProgress = 0;
+	$(document).keydown(function(event){
+		var keyword = [83, 65, 77, 69, 69, 82]
+		if (event.which == keyword[keywordProgress]){
+			keywordProgress += 1;
+		}
+		if (keywordProgress == keyword.length) {
+			$("h1, h2, h3, h4, h5, h6, p, pre").each(
+				function (){
+				 	$(this).text(Math.random() > 0.5 ? "Yes" : "No");
+		 		}
+			)
+		}
 	});
 });
 

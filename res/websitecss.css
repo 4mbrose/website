@@ -37,7 +37,6 @@ a#random-link {
 	min-width: 20rem;
 	box-sizing: border-box;
 	float: left;
-	clear: right;
 }
 .content-text {
 	font-size: 1.25rem;
